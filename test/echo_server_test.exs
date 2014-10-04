@@ -1,7 +1,7 @@
 defmodule EchoServerTest do
   use ExUnit.Case
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  test "sends back an echo" do
+    assert Echo.reply("hi") == "hi"
   end
 end
