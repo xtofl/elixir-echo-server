@@ -16,7 +16,7 @@ defmodule EchoServer do
       {:ok, data} ->
 	IO.puts "received #{data}"
         responder = spawn(fn() -> do_respond(socket) end)
-        spawn(Job, :handle_request, [responder, data])
+        spawn(fn() -> send responder, {:ok, data} end)
         do_server(socket)
  
       {:error, :closed} -> :ok
